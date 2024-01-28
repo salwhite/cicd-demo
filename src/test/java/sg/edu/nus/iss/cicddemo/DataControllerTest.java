@@ -1,37 +1,34 @@
 package sg.edu.nus.iss.cicddemo;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import sg.edu.nus.iss.cicddemo.Controller.DataController;
 
 @SpringBootTest
 public class DataControllerTest {
-    @Autowired
+@Autowired
     DataController dataController;
 
-    @Test
+@Test
     void health() {
         assertEquals("HEALTH CHECK OK!", dataController.healthCheck());
     }
 
-    @Test
+@Test
     void version() {
         assertEquals("The actual version is 1.0.0", dataController.version());
     }
 
-    @Test
+@Test
     void nationsLength() {
         Integer nationsLength = dataController.getRandomNations().size();
-        assertEquals(5, nationsLength);
+        assertEquals(10, nationsLength);
     }
 
     @Test
     void currenciesLength() {
         Integer currenciesLength = dataController.getRandomCurrencies().size();
-        assertEquals(5, currenciesLength);
+        assertEquals(20, currenciesLength);
     }
 }
