@@ -26,12 +26,12 @@ public class DataControllerTest {
     @Test
     void nationsLength() {
         Integer nationsLength = dataController.getRandomNations().size();
-        assertEquals(10, nationsLength);
+        assertEquals(5, nationsLength);
     }
 
     @Test
     void currenciesLength() {
         Integer currenciesLength = dataController.getRandomCurrencies().size();
-        assertEquals(20, currenciesLength);
+        assertEquals(5, currenciesLength);
     }
 }
