@@ -14,7 +14,9 @@
 	<name>cicd-demo</name>
 	<description>CICD Demo project for Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>20</java.version>
+		<sonar.organization>salwhite</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
