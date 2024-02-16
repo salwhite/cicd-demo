@@ -101,12 +101,6 @@ jobs:
         with:
           name: artifact
           path: target/cicd-demo
-
-      - name: Download JAR
-        #Download the artifact which was uploaded in the build's job
-        uses: actions/download-artifact@v3
-        with:
-          name: artifact
           
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v13
