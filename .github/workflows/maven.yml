@@ -96,12 +96,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download JAR
-        #Download the artifact which was uploaded in the build's job
-        uses: actions/download-artifact@v2
-        with:
-          name: artifact
-    
+     
       - name: Checkout Source Codes
       - uses: actions/checkout@v3
    
