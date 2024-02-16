@@ -69,7 +69,7 @@ jobs:
     #Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
     steps:
-      #Check-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+       #Check-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
       - uses: actions/checkout@v3
 
       #Set up JDK 11 (For deploy to AWS Elastic Beanstalk - EB)
