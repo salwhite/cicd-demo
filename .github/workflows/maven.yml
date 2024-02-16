@@ -81,27 +81,37 @@ jobs:
 
 
   deploy:
-    #Depends on build's job
-    needs: build
     name: Deploy
-    #Run on Ubuntu using the latest version
+    # Depends on the 'build' job
+    needs: build
+    # Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
+    
     steps:
-      # name: Download JAR
-       # #Download the artifact which was uploaded in the build's job
-        # uses: actions/download-artifact@v2
-      # with:
-       #   name: artifact
-      #Deploy the artifact (JAR) into AWS Beanstalk
+      - name: Checkout Source Codes
+        uses: actions/checkout@v3
+        with:
+          name: artifact
+          path: /home/runner/work/cicd-demo/cicd-demo
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B clean package
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v13
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws_access_key: ${{ secrets.AWS_SECRET_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           use_existing_version_if_available: false
           application_name: Spring-Boot-DataRest
           environment_name: Spring-Boot-DataRest-env
-          version_label: ${{github.SHA}}
-          region: ap-southeast-2
-          deployment_package: cicd-demo-0.0.1-SNAPSHOT.jar
+          version_label: ${{ github.sha }}
+          region: us-east-1
+          deployment_package: /home/runner/work/cicd-demo/cicd-demo/target/cicd-demo-0.0.1-SNAPSHOT.jar
