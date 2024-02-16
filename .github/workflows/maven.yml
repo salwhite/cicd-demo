@@ -94,10 +94,10 @@ jobs:
           name: artifact
           path: /home/runner/work/cicd-demo/cicd-demo
 
-      - name: Set up JDK 17
+      - name: Set up JDK 20
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '20'
           distribution: 'temurin'
           cache: maven
 
